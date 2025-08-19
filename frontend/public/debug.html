@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Environment Debug</title>
+</head>
+<body>
+    <h1>Environment Variables Debug</h1>
+    <div id="info">
+        <p>This page will show what environment variables are actually available.</p>
+        <p>Check your browser console for more details.</p>
+    </div>
+    
+    <script>
+        console.log('=== ENVIRONMENT DEBUG ===');
+        console.log('All environment variables:', import.meta.env);
+        console.log('VITE_API_URL:', import.meta.env.VITE_API_URL);
+        console.log('VITE_WS_URL:', import.meta.env.VITE_WS_URL);
+        console.log('VITE_BACKEND_URL:', import.meta.env.VITE_BACKEND_URL);
+        
+        document.getElementById('info').innerHTML = `
+            <h3>Environment Variables:</h3>
+            <pre>
+VITE_API_URL: ${import.meta.env.VITE_API_URL || 'NOT SET'}
+VITE_WS_URL: ${import.meta.env.VITE_WS_URL || 'NOT SET'}  
+VITE_BACKEND_URL: ${import.meta.env.VITE_BACKEND_URL || 'NOT SET'}
+MODE: ${import.meta.env.MODE}
+DEV: ${import.meta.env.DEV}
+PROD: ${import.meta.env.PROD}
+            </pre>
+            
+            <h3>Fallback Test:</h3>
+            <p>Staging URL: ${import.meta.env.VITE_API_URL || 'https://knightsbridge-staging-v2-efus7.ondigitalocean.app'}</p>
+        `;
+    </script>
+</body>
+</html>
