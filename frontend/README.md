@@ -69,3 +69,4 @@ export default tseslint.config([
 ```
 # Force rebuild Tue Aug 19 18:18:53 CDT 2025
 # Fallback URLs updated to staging Tue Aug 19 18:23:40 CDT 2025
+# Force deploy with debug logging Tue Aug 19 18:37:56 CDT 2025
