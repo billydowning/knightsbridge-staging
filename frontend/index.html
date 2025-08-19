@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=8" />
+    <link rel="icon" type="image/svg+xml" sizes="16x16" href="/favicon-16x16.svg?v=8" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.svg?v=8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Knightsbridge - Blockchain Chess</title>
+    <!-- Load web font for consistent chess pieces -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols+2:wght@400&display=swap" rel="stylesheet">
+    <style>
+      /* Force consistent chess piece font rendering */
+      .chess-piece {
+        font-family: 'Noto Sans Symbols 2', 'Segoe UI Symbol', 'Apple Color Emoji', monospace !important;
+        font-feature-settings: normal !important;
+        font-variant-ligatures: none !important;
+      }
+      
+      /* Pulse animation for check warnings */
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.02);
+          opacity: 0.8;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

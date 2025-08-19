@@ -1,0 +1,19 @@
+[features]
+seeds = false
+skip-lint = false
+
+[programs.devnet]
+chess_escrow = "F4Py3YTF1JGhbY9ACztXaseFF89ZfLS69ke5Z7EBGQGr"
+
+[programs.mainnet]
+chess_escrow = "F4Py3YTF1JGhbY9ACztXaseFF89ZfLS69ke5Z7EBGQGr"
+
+[registry]
+url = "https://api.apr.dev"
+
+[provider]
+cluster = "mainnet"
+wallet = "~/.config/solana/id.json"
+
+[scripts]
+test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"

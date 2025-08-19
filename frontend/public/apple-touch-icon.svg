@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" width="180" height="180">
+  <defs>
+    <linearGradient id="knightGradientLarge" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#f8f9fa;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ecf0f1;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="180" height="180" fill="#2c3e50" rx="20"/>
+  
+  <!-- Knight symbol - maximum size with glow effect -->
+  <text x="90" y="130" font-family="serif" font-size="120" text-anchor="middle" fill="url(#knightGradientLarge)" font-weight="900" filter="url(#glow)">♘</text>
+  
+</svg>
