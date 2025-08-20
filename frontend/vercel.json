@@ -1,14 +1,14 @@
 {
   "env": {
-    "VITE_API_URL": "https://knightsbridge-app-35xls.ondigitalocean.app",
-    "VITE_WS_URL": "wss://knightsbridge-app-35xls.ondigitalocean.app",
-    "VITE_BACKEND_URL": "https://knightsbridge-app-35xls.ondigitalocean.app"
+    "VITE_API_URL": "https://knightsbridge-staging-v2-efus7.ondigitalocean.app",
+    "VITE_WS_URL": "wss://knightsbridge-staging-v2-efus7.ondigitalocean.app",
+    "VITE_BACKEND_URL": "https://knightsbridge-staging-v2-efus7.ondigitalocean.app"
   },
   "build": {
     "env": {
-      "VITE_API_URL": "https://knightsbridge-app-35xls.ondigitalocean.app",
-      "VITE_WS_URL": "wss://knightsbridge-app-35xls.ondigitalocean.app",
-      "VITE_BACKEND_URL": "https://knightsbridge-app-35xls.ondigitalocean.app"
+      "VITE_API_URL": "https://knightsbridge-staging-v2-efus7.ondigitalocean.app",
+      "VITE_WS_URL": "wss://knightsbridge-staging-v2-efus7.ondigitalocean.app",
+      "VITE_BACKEND_URL": "https://knightsbridge-staging-v2-efus7.ondigitalocean.app"
     }
   },
   "rewrites": [

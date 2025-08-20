@@ -67,7 +67,7 @@ class GameReconnectionService {
 
   constructor() {
     // Always use production backend
-    this.baseUrl = 'https://knightsbridge-app-35xls.ondigitalocean.app/api';
+    this.baseUrl = 'https://knightsbridge-staging-v2-efus7.ondigitalocean.app/api';
   }
 
   /**

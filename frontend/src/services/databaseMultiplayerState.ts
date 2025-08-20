@@ -81,7 +81,7 @@ class DatabaseMultiplayerStateManager {
 
   constructor() {
     // Use production backend URL
-    this.serverUrl = 'https://knightsbridge-app-35xls.ondigitalocean.app';
+    this.serverUrl = 'https://knightsbridge-staging-v2-efus7.ondigitalocean.app';
   }
 
   /**

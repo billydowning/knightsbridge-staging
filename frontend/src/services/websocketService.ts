@@ -81,7 +81,7 @@ class WebSocketService {
 
   private setupSocket() {
     // Connect to root domain but specify the path in Socket.IO config
-    const serverUrl = 'wss://knightsbridge-app-35xls.ondigitalocean.app';
+    const serverUrl = 'wss://knightsbridge-staging-v2-efus7.ondigitalocean.app';
     
     this.socket = io(serverUrl, {
       transports: ['websocket'], // WebSocket only - no polling fallback

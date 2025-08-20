@@ -1738,7 +1738,7 @@ function ChessApp() {
       setGameStatus('🔍 Validating game for payout...');
       
       // Call backend validation API
-      const response = await fetch(`https://knightsbridge-app-35xls.ondigitalocean.app/api/games/${roomId}/validate`, {
+      const response = await fetch(`https://knightsbridge-staging-v2-efus7.ondigitalocean.app/api/games/${roomId}/validate`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -3402,7 +3402,7 @@ function ChessApp() {
           
           // Sync with server state to ensure consistency
           // We'll get the server move count from the game state API
-          fetch(`https://knightsbridge-app-35xls.ondigitalocean.app/debug/game-moves/${roomId}`)
+          fetch(`https://knightsbridge-staging-v2-efus7.ondigitalocean.app/debug/game-moves/${roomId}`)
             .then(response => response.json())
             .then(data => {
               if (data.success) {

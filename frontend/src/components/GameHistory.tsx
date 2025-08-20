@@ -90,8 +90,8 @@ export const GameHistory: React.FC<GameHistoryProps> = ({
       
       const response = await fetch(
         `${process.env.NODE_ENV === 'production' 
-          ? 'https://knightsbridge-app-35xls.ondigitalocean.app/api'
-          : 'https://knightsbridge-app-35xls.ondigitalocean.app/api'
+          ? 'https://knightsbridge-staging-v2-efus7.ondigitalocean.app/api'
+          : 'https://knightsbridge-staging-v2-efus7.ondigitalocean.app/api'
         }/users/${walletAddress}/games?page=${pageNum}&limit=10&status=${statusFilter}`
       );
       
