@@ -402,34 +402,74 @@ class DatabaseMultiplayerStateManager {
     try {
       await this.ensureConnected();
       
-      return new Promise((resolve, reject) => {
+      return new Promise(async (resolve, reject) => {
         if (!this.socket) {
           reject(new Error('Not connected to server'));
           return;
         }
 
         // Add timeout to prevent hanging
-        const timeout = setTimeout(() => {
-          reject(new Error('Join room request timed out'));
-        }, 10000); // 10 second timeout
+        const timeout = setTimeout(async () => {
+          console.log('⚠️ WebSocket joinRoom timed out, trying HTTP API fallback...');
+          try {
+            const httpResult = await this.joinRoomViaHTTP(roomId, playerWallet);
+            resolve(httpResult);
+          } catch (httpError) {
+            reject(new Error('Both WebSocket and HTTP join room requests failed'));
+          }
+        }, 5000); // 5 second timeout, then fallback
 
-        this.socket.emit('joinRoom', { roomId, playerWallet }, (response: any) => {
+        this.socket.emit('joinRoom', { roomId, playerWallet }, async (response: any) => {
           clearTimeout(timeout);
           if (response.success) {
             // Track room and player for state restoration
             this.currentRoomId = roomId;
             this.currentPlayerWallet = playerWallet;
-            console.log('✅ Room joined and context tracked for reliability:', roomId);
+            console.log('✅ Room joined via WebSocket and context tracked for reliability:', roomId);
             resolve(response.role);
           } else {
-            console.error('❌ Failed to join room:', response.error);
-            reject(new Error(response.error));
+            console.error('❌ WebSocket join room failed:', response.error, 'trying HTTP API fallback...');
+            try {
+              const httpResult = await this.joinRoomViaHTTP(roomId, playerWallet);
+              resolve(httpResult);
+            } catch (httpError) {
+              console.error('❌ HTTP join room also failed:', httpError);
+              reject(new Error(response.error));
+            }
           }
         });
       });
     } catch (error) {
       console.error('❌ Error joining room:', error);
       throw error;
+    }
+  }
+
+  private async joinRoomViaHTTP(roomId: string, playerWallet: string): Promise<'white' | 'black' | null> {
+    console.log('🌐 Attempting to join room via HTTP API:', roomId);
+    
+    const response = await fetch(`${this.serverUrl}/api/rooms/${roomId}/join`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ playerWallet }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.error || `HTTP ${response.status}`);
+    }
+
+    const data = await response.json();
+    if (data.success) {
+      // Track room and player for state restoration
+      this.currentRoomId = roomId;
+      this.currentPlayerWallet = playerWallet;
+      console.log('✅ Room joined via HTTP API and context tracked for reliability:', roomId);
+      return data.role;
+    } else {
+      throw new Error(data.error || 'Unknown error');
     }
   }
 
